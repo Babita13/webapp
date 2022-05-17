@@ -1,0 +1,35 @@
+This Terraform Module creates VPC infrastructure with public and private subnets, Autoscaling group and ELB. 
+
+Webserver are deployed in private subnet and ELB in Public Subnets. 
+
+Usage: 
+
+module "webapp" {
+    source = "./module"
+
+    AWS_REGION = var.AWS_REGION
+    vpc_cidr = var.vpc_cidr
+    public_subnets_cidr =  var.public_subnets_cidr
+    private_subnets_cidr = var.private_subnets_cidr
+    AMI = var.AMI
+
+}
+
+
+
+Accesptance Cirteria: 
+Encrytion at Rest: True 
+Ec2 instance without Keypair: true (Need to enable Session manager to access it) ## https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html
+Health Checks in place and alarm in place as well
+/var/log directory is mount on external disk than root. which won't terminate with instance. 
+autosacling policy in place
+
+Architecture: 
+
+
+
+
+
+
+
+
